@@ -1,6 +1,6 @@
-def decode(dict, n):
-    s = dict[n]
-    if len(s)==0:                   #if a parent is null (num 0 in a dict)
+def decode(data, n):
+    s = data[n]
+    if len(s)==0:                   #if a parent is null (num 0 in a data)
         return s
     temp = ''                       #index of a parent
     i = 0
@@ -8,11 +8,11 @@ def decode(dict, n):
         temp += s[i]
         i+=1
     i+=1                            #index of a new char
-    return decode(dict, int(temp)) + s[i]
+    return decode(data, int(temp)) + s[i]
 
 s = "0 a0 b0 r1 c1 d1 b3 a"         #coded string
 
-dict = ['']                         #dictionary
+data = ['']                         #dictionary
 s2 = ''                             #decoded string
 i=0
 
@@ -22,11 +22,11 @@ while i<len(s):
         temp += s[i]
         i+=1
     i+=1                            #index of a new char
-    dict.append(temp + ' ' + s[i])
+    data.append(temp + ' ' + s[i])
     i+=1                            #index of a next part
 
-for i in range(len(dict)):
-    s2 += decode(dict, i)
+for i in range(1, len(data)):
+    s2 += decode(data, i)
 
 print(s2)
 
